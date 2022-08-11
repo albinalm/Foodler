@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:viewmodels="clr-namespace:Foodler.ViewModels" x:DataType="viewmodels:LoginViewModel"
+             mc:Ignorable="d"
+             x:Class="Foodler.Views.LoginPage"
+             Shell.NavBarIsVisible="False">
+    <ContentPage.Content>
+        <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
+            <Label Text="Please authenticate to continue" FontSize="Title" Padding="20"/>
+            <Entry x:Name="txt_apiKey" Placeholder="Enter API-key" Text="{Binding ApiKeyTextBoxTextValue}" HorizontalOptions="Fill" TextColor="{Binding ApiKeyTextBoxTextColor}"/>
+            <Label x:Name="lbl_authenticationFailed" Text="{Binding AuthenticationFailedLabelTextValue}" IsVisible="{Binding AuthenticationFailedLabelVisible}" TextColor="Red" HorizontalTextAlignment="Start"/>
+            <Button VerticalOptions="Center" Text="Login" Command="{Binding AuthenticateCommand}"/>
+ 
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
