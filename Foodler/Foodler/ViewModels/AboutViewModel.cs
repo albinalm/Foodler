@@ -21,9 +21,9 @@ namespace Foodler.ViewModels
             //   await Shell.Current.GoToAsync($"//{nameof(AboutPage)}");
             var manager = new RecipeAPIManager();
             var recipes = await manager.GetRandomRecipesAsync(1, 2);
-          
-            for (int i = 0; i < recipes.Count; i++)
-                recipes[i].Weekday = (DayOfWeek)Enum.Parse(typeof(DayOfWeek), i.ToString());
+
+            //for (int i = 0; i < recipes.Count; i++)
+            //    recipes[i].Weekday = (DayOfWeek)Enum.Parse(typeof(DayOfWeek), i.ToString());
 
             Models.WeeklyPreview.WeeklyPreviewDataHolder.Schedule = new WeeklySchedule
             {

@@ -21,7 +21,7 @@ namespace Foodler.Views
 
         private void ContentPage_Appearing(object sender, EventArgs e)
         {
-            foreach(var recipe in WeeklyPreviewDataHolder.Schedule.Recipes)
+            foreach (var recipe in WeeklyPreviewDataHolder.Schedule.Recipes)
             {
                 AddRecipeContentHolder(recipe, stackLayout);
             }
@@ -34,7 +34,7 @@ namespace Foodler.Views
             };
             var instructionsLabel = new Label
             {
-                Text = recipe.Instructions
+                Text = recipe.Name
             };
             parent.Children.Add(titleLabel);
             parent.Children.Add(instructionsLabel);

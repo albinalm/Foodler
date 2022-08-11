@@ -20,7 +20,7 @@ namespace Foodler.Networking
             {
                 var json = await httpClient.GetStringAsync($"https://api.spoonacular.com/recipes/random?number={50}&tags=dinner&apiKey={await DeviceManager.GetAPIKey()}");
                 var result = JsonConvert.DeserializeObject<RecipeHolder>(json);
-                var recipes = result.Recipes.Where(x => x.Servings == servings).Take(7);
+                var recipes = result.Recipes;
 
                 return recipes.ToList();
             }
@@ -42,12 +42,12 @@ namespace Foodler.Networking
                 else
                     throw;
             }
-            catch(Exception)
+            catch (Exception)
             {
                 throw;
             }
         }
 
-      
+
     }
 }

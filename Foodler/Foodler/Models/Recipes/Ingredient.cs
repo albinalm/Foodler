@@ -4,7 +4,7 @@ namespace Foodler.Models.Recipes
 {
     public class Ingredient
     {
+        public int Id { get; set; }
         public string Name { get; set; }
-        public Measures Measures { get; set; }
     }
 }
