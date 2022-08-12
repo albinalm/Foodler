@@ -349,3 +349,6 @@ MigrationBackup/
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
 /Foodler/Foodler/Migrations
+/Source/App/Foodler/Foodler/GettingStarted.txt
+/Source/App/Foodler/Foodler.Android/Resources/AboutResources.txt
+/Source/App/Foodler/Foodler.Android/Assets/AboutAssets.txt
