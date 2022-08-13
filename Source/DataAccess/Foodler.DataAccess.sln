@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32616.157
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Foodler.API", "FoodlerAPI\Foodler.API.csproj", "{7369786A-0AB5-4758-8407-F8D2005202C0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Foodler.Repository", "Foodler.Repository\Foodler.Repository.csproj", "{23953580-C138-441E-A8D7-653221F42BC8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Foodler.Repository", "FoodlerRepository\Foodler.Repository.csproj", "{6832E6DD-CDAB-464E-9CE6-31A33F91CFFA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Foodler.API", "Foodler.API\Foodler.API.csproj", "{1AAC34B7-A678-4178-8DC8-42A6FC0A240A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,14 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7369786A-0AB5-4758-8407-F8D2005202C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7369786A-0AB5-4758-8407-F8D2005202C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7369786A-0AB5-4758-8407-F8D2005202C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7369786A-0AB5-4758-8407-F8D2005202C0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6832E6DD-CDAB-464E-9CE6-31A33F91CFFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6832E6DD-CDAB-464E-9CE6-31A33F91CFFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6832E6DD-CDAB-464E-9CE6-31A33F91CFFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6832E6DD-CDAB-464E-9CE6-31A33F91CFFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23953580-C138-441E-A8D7-653221F42BC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23953580-C138-441E-A8D7-653221F42BC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23953580-C138-441E-A8D7-653221F42BC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23953580-C138-441E-A8D7-653221F42BC8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1AAC34B7-A678-4178-8DC8-42A6FC0A240A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1AAC34B7-A678-4178-8DC8-42A6FC0A240A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1AAC34B7-A678-4178-8DC8-42A6FC0A240A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1AAC34B7-A678-4178-8DC8-42A6FC0A240A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
