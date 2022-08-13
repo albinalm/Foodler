@@ -1,3 +1,6 @@
+using FoodlerRepository.Database.Repositories;
+using FoodlerRepository.Entities;
+using FoodlerRepository.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FoodlerAPI.Controllers
@@ -12,15 +15,23 @@ namespace FoodlerAPI.Controllers
     };
 
         private readonly ILogger<WeatherForecastController> _logger;
+        private readonly IFoodlerRecipeService foodlerRecipeService;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public WeatherForecastController(ILogger<WeatherForecastController> logger, IFoodlerRecipeService foodlerRecipeService)
         {
             _logger = logger;
+            this.foodlerRecipeService = foodlerRecipeService;
         }
 
         [HttpGet(Name = "GetWeatherForecast")]
         public IEnumerable<WeatherForecast> Get()
         {
+            var recipe = new Recipe
+            {
+                Name = "Tomatsoppa"
+            };
+            foodlerRecipeService.AddRecipe(recipe);
+
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
                 Date = DateTime.Now.AddDays(index),
@@ -29,5 +40,7 @@ namespace FoodlerAPI.Controllers
             })
             .ToArray();
         }
+
+
     }
 }
