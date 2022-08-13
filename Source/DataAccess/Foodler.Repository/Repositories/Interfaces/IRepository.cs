@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Foodler.Repository.Entities.Bases;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Foodler.Repository.Repositories.Interfaces
 {
-    public interface IRepository<TEntity> where TEntity : Entities.EntityBase
+    public interface IRepository<TEntity> where TEntity : EntityBase
     {
         IQueryable<TEntity> Query();
         void Insert(TEntity entity);

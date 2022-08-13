@@ -1,0 +1,26 @@
+﻿using Foodler.Repository.Database.Context;
+using Foodler.Repository.Entities.Recipes;
+using Foodler.Repository.Repositories.Bases;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Foodler.Repository.Repositories
+{
+    public class MeasurmentRepository : RepositoryBase<Measurment>
+    {
+        private readonly FoodlerDatabaseContext context;
+
+        public MeasurmentRepository(FoodlerDatabaseContext context) : base(context)
+        {
+            this.context = context;
+        }
+
+        public override IQueryable<Measurment> Query()
+        {
+            return context.Measurments;
+        }
+    }
+}

@@ -1,4 +1,5 @@
 ﻿using Foodler.Repository.Database.Context;
+using Foodler.Repository.Entities.Bases;
 using Foodler.Repository.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Foodler.Repository.Repositories.Bases
 {
-    public abstract class RepositoryBase<TEntity> : IDisposable, IRepository<TEntity> where TEntity : Entities.EntityBase
+    public abstract class RepositoryBase<TEntity> : IDisposable, IRepository<TEntity> where TEntity : EntityBase
     {
         private FoodlerDatabaseContext context;
         public RepositoryBase(FoodlerDatabaseContext context)

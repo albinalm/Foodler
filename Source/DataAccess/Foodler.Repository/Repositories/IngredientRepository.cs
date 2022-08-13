@@ -1,8 +1,8 @@
 ﻿using Foodler.Repository.Database.Context;
-using Foodler.Repository.Entities;
+using Foodler.Repository.Entities.Recipes;
 using Foodler.Repository.Repositories.Bases;
 
-namespace Foodler.Repository.Database.Repositories
+namespace Foodler.Repository.Repositories
 {
     public class IngredientRepository : RepositoryBase<Ingredient>
     {

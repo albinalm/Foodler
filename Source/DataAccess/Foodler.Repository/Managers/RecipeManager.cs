@@ -1,21 +1,18 @@
-﻿using Foodler.Repository.Managers.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Foodler.Repository.Entities.Accounts;
+using Foodler.Repository.Entities.Recipes;
+using Foodler.Repository.Entities.Recipes.Interfaces;
+using Foodler.Repository.Managers.Interfaces;
 
 namespace Foodler.Repository.Managers
 {
-    public class RecipeManager : IRecipeManager
+    public class RecipeManager : IEntityManager<Recipe>
     {
-        public Entities.Recipe Create()
+        public Recipe Create(string name)
         {
-            return new Entities.Recipe();
-        }
-        public void SetRecipeName(ref Entities.Recipe recipe, string name)
-        {
-            recipe.Name = name;
+            return new Recipe
+            {
+                Name = name
+            };
         }
     }
 }

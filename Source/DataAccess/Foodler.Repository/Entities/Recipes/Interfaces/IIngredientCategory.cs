@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Foodler.Shared.Models
+namespace Foodler.Repository.Entities.Recipes.Interfaces
 {
-    public abstract class ModelBase
+    public interface IIngredientCategory
     {
-        public string? Name { get; set; }
+        void SetName(string name);
     }
 }

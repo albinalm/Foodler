@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Foodler.Shared.Models
+namespace Foodler.Shared.Models.Bases
 {
-    public class Recipe : ModelBase
+    public abstract class ModelBase
     {
+        public string? Name { get; set; }
     }
 }

@@ -1,9 +1,10 @@
 ﻿using Foodler.Repository.Database.Context;
-using Foodler.Repository.Entities;
+using Foodler.Repository.Entities.Recipes;
 using Foodler.Repository.Repositories.Bases;
 using Foodler.Repository.Repositories.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
-namespace Foodler.Repository.Database.Repositories
+namespace Foodler.Repository.Repositories
 {
     public class RecipeRepository : RepositoryBase<Recipe>
     {
@@ -15,8 +16,7 @@ namespace Foodler.Repository.Database.Repositories
         }
         public override IQueryable<Recipe> Query()
         {
-            return context.Recipes;
+            return context.Recipes.Include(r => r.Ingredients);
         }
-
     }
 }
