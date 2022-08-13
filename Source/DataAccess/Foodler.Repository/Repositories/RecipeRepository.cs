@@ -1,7 +1,9 @@
-﻿using FoodlerRepository.Database.Context;
-using FoodlerRepository.Entities;
+﻿using Foodler.Repository.Database.Context;
+using Foodler.Repository.Entities;
+using Foodler.Repository.Repositories.Bases;
+using Foodler.Repository.Repositories.Interfaces;
 
-namespace FoodlerRepository.Database.Repositories
+namespace Foodler.Repository.Database.Repositories
 {
     public class RecipeRepository : RepositoryBase<Recipe>
     {
@@ -11,9 +13,10 @@ namespace FoodlerRepository.Database.Repositories
         {
             this.context = context;
         }
-        public IQueryable<Recipe> GetRecipes()
+        public override IQueryable<Recipe> Query()
         {
             return context.Recipes;
         }
+
     }
 }

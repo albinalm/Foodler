@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace FoodlerRepository.Migrations
+namespace Foodler.Repository.Migrations
 {
     public partial class FirstMigration : Migration
     {

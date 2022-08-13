@@ -1,8 +1,8 @@
-using FoodlerRepository.Database.Repositories;
-using FoodlerRepository.Entities;
-using FoodlerRepository.Services.Interfaces;
+using Foodler.Repository.Database.Repositories;
+using Foodler.Repository.Entities;
+using Foodler.Shared.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-
+using Models = Foodler.Shared.Models;
 namespace FoodlerAPI.Controllers
 {
     [ApiController]
@@ -23,13 +23,10 @@ namespace FoodlerAPI.Controllers
             this.foodlerRecipeService = foodlerRecipeService;
         }
 
-        [HttpGet(Name = "GetWeatherForecast")]
-        public IEnumerable<WeatherForecast> Get()
+        [HttpPost(Name = "GetWeatherForecast")]
+        public IEnumerable<WeatherForecast> Post(Models.Recipe recipe, string name)
         {
-            var recipe = new Recipe
-            {
-                Name = "Tomatsoppa"
-            };
+
             foodlerRecipeService.AddRecipe(recipe);
 
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast

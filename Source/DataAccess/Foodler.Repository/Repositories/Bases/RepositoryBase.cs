@@ -1,4 +1,5 @@
-﻿using FoodlerRepository.Database.Context;
+﻿using Foodler.Repository.Database.Context;
+using Foodler.Repository.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -6,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FoodlerRepository.Database.Repositories
+namespace Foodler.Repository.Repositories.Bases
 {
-    public class RepositoryBase<TEntity> : IDisposable where TEntity : class
+    public abstract class RepositoryBase<TEntity> : IDisposable, IRepository<TEntity> where TEntity : Entities.EntityBase
     {
         private FoodlerDatabaseContext context;
         public RepositoryBase(FoodlerDatabaseContext context)
@@ -28,6 +29,7 @@ namespace FoodlerRepository.Database.Repositories
             return (TEntity?)context.Find(typeof(TEntity), id)
                    ?? throw new NullReferenceException("");
         }
+
         public void Delete(TEntity entity)
         {
             if (entity == null)
@@ -50,14 +52,14 @@ namespace FoodlerRepository.Database.Repositories
 
         protected virtual void Dispose(bool disposing)
         {
-            if (!this.disposed)
+            if (!disposed)
             {
                 if (disposing)
                 {
                     context.Dispose();
                 }
             }
-            this.disposed = true;
+            disposed = true;
         }
 
         public void Dispose()
@@ -65,5 +67,6 @@ namespace FoodlerRepository.Database.Repositories
             Dispose(true);
             GC.SuppressFinalize(this);
         }
+        public abstract IQueryable<TEntity> Query();
     }
 }

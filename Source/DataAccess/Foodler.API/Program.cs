@@ -1,4 +1,4 @@
-using FoodlerRepository.Services.Configuration;
+using Foodler.Shared.Services.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
