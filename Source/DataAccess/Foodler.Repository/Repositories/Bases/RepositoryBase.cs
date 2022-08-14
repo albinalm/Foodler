@@ -69,5 +69,6 @@ namespace Foodler.Repository.Repositories.Bases
             GC.SuppressFinalize(this);
         }
         public abstract IQueryable<TEntity> Query();
+        public abstract IQueryable<TEntity> FindByName(string name);
     }
 }

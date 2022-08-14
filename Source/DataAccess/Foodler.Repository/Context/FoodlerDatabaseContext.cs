@@ -1,4 +1,5 @@
-﻿using Foodler.Repository.Entities.Recipes;
+﻿using Foodler.Repository.Entities.Bases;
+using Foodler.Repository.Entities.Recipes;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -20,5 +21,6 @@ namespace Foodler.Repository.Database.Context
         {
             optionsbuilder.UseSqlServer(@"");
         }
+
     }
 }

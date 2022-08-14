@@ -18,6 +18,11 @@ namespace Foodler.Repository.Repositories
             this.context = context;
         }
 
+        public override IQueryable<IngredientCategory> FindByName(string name)
+        {
+            return context.IngredientCategories.Where(ic => ic.Name == name);
+        }
+
         public override IQueryable<IngredientCategory> Query()
         {
             return context.IngredientCategories;

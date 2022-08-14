@@ -18,6 +18,11 @@ namespace Foodler.Repository.Repositories
             this.context = context;
         }
 
+        public override IQueryable<Measurment> FindByName(string name)
+        {
+            return context.Measurments.Where(m => m.Name == name);
+        }
+
         public override IQueryable<Measurment> Query()
         {
             return context.Measurments;

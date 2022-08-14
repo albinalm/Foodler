@@ -23,19 +23,7 @@ namespace Foodler.Shared.Services
         }
         public void AddRecipe(RecipeModels.Recipe recipe)
         {
-            var recipeLOL = recipeManager.Create("Mammas goda frukost");
 
-            var recipes = recipeRepository.Query()
-                                          .ToList();
-            var recipeQuery = recipes.Find(r => r.Name == recipe.Name);
-            if (recipeQuery == null)
-            {
-                // var recipeEntity = recipeManager.Create();
-                var recipeEntity = mapper.Map<RecipeEntities.Recipe>(recipe);
-
-                recipeRepository.Insert(recipeEntity);
-                recipeRepository.Save();
-            }
         }
         public IEnumerable<RecipeModels.Recipe> GetRecipesWithIngredient(RecipeModels.Ingredient ingredient)
         {

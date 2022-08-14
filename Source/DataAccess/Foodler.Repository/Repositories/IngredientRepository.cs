@@ -12,9 +12,10 @@ namespace Foodler.Repository.Repositories
         {
             this.context = context;
         }
-        public IQueryable<Ingredient> GetIngredients()
+
+        public override IQueryable<Ingredient> FindByName(string name)
         {
-            return context.Ingredients;
+            return context.Ingredients.Where(i => i.Name == name);
         }
 
         public override IQueryable<Ingredient> Query()

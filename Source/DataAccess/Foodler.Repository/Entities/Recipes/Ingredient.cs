@@ -1,5 +1,6 @@
 ﻿using Foodler.Repository.Entities.Bases;
 using Foodler.Repository.Entities.Recipes.Interfaces;
+using System.ComponentModel.DataAnnotations;
 
 namespace Foodler.Repository.Entities.Recipes
 {
@@ -31,6 +32,11 @@ namespace Foodler.Repository.Entities.Recipes
         {
             this.Quantity = quantity;
             return this;
+        }
+
+        protected override IEnumerable<ValidationResult> CustomValidation(ValidationContext validationContext)
+        {
+            throw new NotImplementedException();
         }
     }
 }

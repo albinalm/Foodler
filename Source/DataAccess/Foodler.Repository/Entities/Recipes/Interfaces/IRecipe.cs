@@ -1,4 +1,5 @@
 ﻿using Foodler.Repository.Entities.Accounts;
+using System.ComponentModel.DataAnnotations;
 
 namespace Foodler.Repository.Entities.Recipes.Interfaces
 {
