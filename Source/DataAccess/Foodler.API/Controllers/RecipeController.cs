@@ -1,6 +1,8 @@
 using Foodler.Shared.Models.Recipes;
 using Foodler.Shared.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
+
 namespace FoodlerAPI.Controllers
 {
     [ApiController]
@@ -19,20 +21,33 @@ namespace FoodlerAPI.Controllers
         }
 
         [HttpPost(Name = "AddRecipe")]
-        public string Post(Ingredient ingredient)
+        public IActionResult Post(Recipe recipe)
         {
+            try
+            {
+                foodlerRecipeService.AddRecipe(recipe);
+                return Ok(recipe);
+            }
+            catch (ValidationException validationException)
+            {
+                return BadRequest(validationException.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
             //foreach (var recipe in recipes)
             //{
             //    foodlerRecipeService.AddRecipe(recipe);
             //}
             //return "lol";
-            var fetchedRecipes = foodlerRecipeService.GetRecipesWithIngredient(ingredient);
-            var message = "";
-            foreach (var recipe in fetchedRecipes)
-            {
-                message += recipe.Name + Environment.NewLine;
-            }
-            return message;
+            //var fetchedRecipes = foodlerRecipeService.GetRecipesWithIngredient(ingredient);
+            //var message = "";
+            //foreach (var recipe in fetchedRecipes)
+            //{
+            //    message += recipe.Name + Environment.NewLine;
+            //}
+            //return message;
         }
 
 

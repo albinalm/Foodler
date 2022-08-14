@@ -35,7 +35,24 @@ namespace Foodler.Repository.Entities.Recipes
 
         protected override IEnumerable<ValidationResult> CustomValidation(ValidationContext validationContext)
         {
-            throw new NotImplementedException();
+            if (Ingredients == null || !Ingredients.Any())
+            {
+                yield return new ValidationResult(
+                    "The property 'Ingredients' cannot be null or empty",
+                    new[] { nameof(Ingredients) });
+            }
+            if (string.IsNullOrWhiteSpace(Instructions))
+            {
+                yield return new ValidationResult(
+                    "The property 'Instructions' cannot be null or contain only whitespaces",
+                    new[] { nameof(Ingredients) });
+            }
+            if (Author == null)
+            {
+                yield return new ValidationResult(
+                    "The property 'Author' cannot be null.",
+                    new[] { nameof(Ingredients) });
+            }
         }
     }
 }

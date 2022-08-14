@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using Foodler.Repository.Database.Context;
 using Foodler.Repository.Entities.Recipes;
-using Foodler.Repository.Entities.Recipes.Interfaces;
 using Foodler.Repository.Managers;
 using Foodler.Repository.Managers.Interfaces;
 using Foodler.Repository.Repositories;
@@ -32,10 +31,6 @@ namespace Foodler.Shared.Services.Configuration
             services.AddScoped<IEntityManager<Measurment>, MeasurmentManager>();
             services.AddScoped<IEntityManager<IngredientCategory>, IngredientCategoryManager>();
             services.AddScoped<IFoodlerRecipeService, FoodlerRecipeService>();
-        }
-        public static void ConfigureAutoMapper()
-        {
-
         }
     }
 }

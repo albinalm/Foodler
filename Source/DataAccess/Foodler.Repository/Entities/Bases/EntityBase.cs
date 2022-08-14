@@ -8,23 +8,23 @@ using System.Threading.Tasks;
 
 namespace Foodler.Repository.Entities.Bases
 {
-    public abstract class EntityBase : IValidatableObject
+    public class EntityBase : IValidatableObject
     {
-        public int Id { get; set; }
+        public int Id { get; protected set; }
 
-        [Required]
         public string Name { get; set; }
 
-        protected abstract IEnumerable<ValidationResult> CustomValidation(ValidationContext validationContext);
+        protected virtual IEnumerable<ValidationResult> CustomValidation(ValidationContext validationContext) => Enumerable.Empty<ValidationResult>();
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             if (string.IsNullOrWhiteSpace(Name))
-            {
                 yield return new ValidationResult(
-                    "Name cannot be null or contain only whitespaces",
+                    "The property 'Name' cannot be null or contain only whitespaces",
                     new[] { nameof(Name) });
-            }
-            CustomValidation(validationContext);
+
+            foreach (var validationResult in CustomValidation(validationContext))
+                yield return validationResult;
+
         }
     }
 }

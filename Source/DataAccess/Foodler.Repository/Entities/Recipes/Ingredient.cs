@@ -36,7 +36,24 @@ namespace Foodler.Repository.Entities.Recipes
 
         protected override IEnumerable<ValidationResult> CustomValidation(ValidationContext validationContext)
         {
-            throw new NotImplementedException();
+            if (Quantity == 0)
+            {
+                yield return new ValidationResult(
+                    "The property 'Quantity' must have a value greater than 0",
+                    new[] { nameof(Quantity) });
+            }
+            if (Measurment == null)
+            {
+                yield return new ValidationResult(
+                   "The property 'Measurment' cannot be null",
+                   new[] { nameof(Measurment) });
+            }
+            if (Category == null)
+            {
+                yield return new ValidationResult(
+                 "The property 'Ingredient' category cannot be null",
+                 new[] { nameof(Category) });
+            }
         }
     }
 }

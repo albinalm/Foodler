@@ -1,6 +1,4 @@
-﻿using Foodler.Repository.Entities.Accounts;
-using Foodler.Repository.Entities.Recipes;
-using Foodler.Repository.Entities.Recipes.Interfaces;
+﻿using Foodler.Repository.Entities.Recipes;
 using Foodler.Repository.Managers.Interfaces;
 
 namespace Foodler.Repository.Managers

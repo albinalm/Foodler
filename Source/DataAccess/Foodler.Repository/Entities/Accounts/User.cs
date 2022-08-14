@@ -1,10 +1,5 @@
 ﻿using Foodler.Repository.Entities.Bases;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Foodler.Repository.Entities.Accounts
 {
@@ -15,7 +10,18 @@ namespace Foodler.Repository.Entities.Accounts
 
         protected override IEnumerable<ValidationResult> CustomValidation(ValidationContext validationContext)
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrWhiteSpace(Email))
+            {
+                yield return new ValidationResult(
+                    "The property 'Email' cannot be null or contain only whitespaces",
+                    new[] { nameof(Email) });
+            }
+            if (string.IsNullOrWhiteSpace(Password))
+            {
+                yield return new ValidationResult(
+                    "The property 'Password' cannot be null or contain only whitespaces",
+                    new[] { nameof(Password) });
+            }
         }
     }
 }

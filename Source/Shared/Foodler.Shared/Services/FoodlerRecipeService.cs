@@ -23,12 +23,16 @@ namespace Foodler.Shared.Services
         }
         public void AddRecipe(RecipeModels.Recipe recipe)
         {
+            var newrecipe = mapper.Map<RecipeEntities.Recipe>(recipe);
 
+            recipeRepository.Insert(newrecipe);
+            recipeRepository.Save();
         }
         public IEnumerable<RecipeModels.Recipe> GetRecipesWithIngredient(RecipeModels.Ingredient ingredient)
         {
             var recipes = recipeRepository.Query()
                                         .ToList();
+
             var filteredRecipes = new List<RecipeEntities.Recipe>();
             foreach (var recipe in recipes)
             {

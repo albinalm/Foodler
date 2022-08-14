@@ -1,7 +1,6 @@
 ﻿using Foodler.Repository.Database.Context;
 using Foodler.Repository.Entities.Recipes;
 using Foodler.Repository.Repositories.Bases;
-using Foodler.Repository.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace Foodler.Repository.Repositories
