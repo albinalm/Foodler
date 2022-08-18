@@ -5,6 +5,6 @@ namespace Foodler.Shared.Services.Interfaces
     public interface IFoodlerRecipeService
     {
         void AddRecipe(Recipe recipe);
-        IEnumerable<Recipe> GetRecipesWithIngredient(Ingredient ingredient);
+        IEnumerable<Recipe> GetRecipesContainingIngredient(string ingredientName);
     }
 }

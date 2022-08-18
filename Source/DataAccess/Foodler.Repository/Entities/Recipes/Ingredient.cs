@@ -6,6 +6,10 @@ namespace Foodler.Repository.Entities.Recipes
 {
     public class Ingredient : EntityBase, IIngredient
     {
+        public Ingredient(string name) : base(name)
+        {
+        }
+
         public long Quantity { get; set; }
         public Measurment Measurment { get; set; }
         public IngredientCategory Category { get; set; }
@@ -34,6 +38,17 @@ namespace Foodler.Repository.Entities.Recipes
             return this;
         }
 
+        #region Overloads
+        public IIngredient SetMeasurment(IMeasurment measurment)
+        {
+            return SetMeasurment((Measurment)measurment);
+        }
+        public IIngredient SetCategory(IIngredientCategory category)
+        {
+            return SetCategory((IngredientCategory)category);
+        }
+        #endregion
+
         protected override IEnumerable<ValidationResult> CustomValidation(ValidationContext validationContext)
         {
             if (Quantity == 0)
@@ -51,7 +66,7 @@ namespace Foodler.Repository.Entities.Recipes
             if (Category == null)
             {
                 yield return new ValidationResult(
-                 "The property 'Ingredient' category cannot be null",
+                 "The property 'Category' category cannot be null",
                  new[] { nameof(Category) });
             }
         }

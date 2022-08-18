@@ -6,6 +6,10 @@ namespace Foodler.Repository.Entities.Recipes
 {
     public class Measurment : EntityBase, IMeasurment
     {
+        public Measurment(string name) : base(name)
+        {
+        }
+
         public string ShortName { get; set; }
 
         public IMeasurment SetName(string name)

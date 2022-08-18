@@ -1,7 +1,9 @@
-﻿namespace Foodler.Repository.Managers.Interfaces
+﻿using Foodler.Repository.Entities.Bases;
+
+namespace Foodler.Repository.Managers.Interfaces
 {
-    public interface IEntityManager<TEntity> where TEntity : class
+    public interface IEntityManager<TEntity> where TEntity : EntityBase
     {
-        abstract TEntity Create(string name);
+        TEntity Create(string name);
     }
 }

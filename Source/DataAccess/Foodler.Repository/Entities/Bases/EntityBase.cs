@@ -1,4 +1,6 @@
-﻿using Foodler.Repository.Entities.Recipes.Interfaces;
+﻿using Foodler.Repository.Entities.Bases.Interfaces;
+using Foodler.Repository.Entities.Recipes.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -8,11 +10,16 @@ using System.Threading.Tasks;
 
 namespace Foodler.Repository.Entities.Bases
 {
-    public class EntityBase : IValidatableObject
+    [Index(nameof(Name), IsUnique = true)]
+    public class EntityBase : IValidatableObject, IEntityBase
     {
-        public int Id { get; protected set; }
+        public int Id { get; set; }
 
         public string Name { get; set; }
+        public EntityBase(string name)
+        {
+            Name = name;
+        }
 
         protected virtual IEnumerable<ValidationResult> CustomValidation(ValidationContext validationContext) => Enumerable.Empty<ValidationResult>();
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)

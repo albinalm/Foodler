@@ -1,9 +1,10 @@
-﻿using Foodler.Repository.Entities.Accounts;
+﻿using Foodler.Repository.Entities.Bases.Interfaces;
+using Foodler.Repository.Entities.Security;
 using System.ComponentModel.DataAnnotations;
 
 namespace Foodler.Repository.Entities.Recipes.Interfaces
 {
-    public interface IRecipe
+    public interface IRecipe : IEntityBase
     {
         IEnumerable<Ingredient> Ingredients { get; set; }
         string Instructions { get; set; }

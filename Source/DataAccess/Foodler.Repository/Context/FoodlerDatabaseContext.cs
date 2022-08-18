@@ -1,4 +1,6 @@
-﻿using Foodler.Repository.Entities.Recipes;
+﻿using Foodler.Repository.Entities.Bases;
+using Foodler.Repository.Entities.Recipes;
+using Foodler.Repository.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System.ComponentModel.DataAnnotations;
@@ -7,48 +9,63 @@ namespace Foodler.Repository.Database.Context
 {
     public class FoodlerDatabaseContext : DbContext
     {
+        private readonly IEntityValidationService validationService;
+
 #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         public DbSet<Ingredient> Ingredients { get; set; }
         public DbSet<Recipe> Recipes { get; set; }
         public DbSet<Measurment> Measurments { get; set; }
         public DbSet<IngredientCategory> IngredientCategories { get; set; }
-#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsbuilder)
+        public FoodlerDatabaseContext(IEntityValidationService validationService)
         {
-            optionsbuilder.UseSqlServer(@"");
+            this.validationService = validationService;
         }
+        public FoodlerDatabaseContext(DbContextOptions options, IEntityValidationService validationService) : base(options)
+        {
+            this.validationService = validationService;
+        }
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.D
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Recipe>()
+                        .HasIndex(u => u.Name)
+                        .IsUnique();
+        }
+        #region Overrides
+
         public override int SaveChanges()
         {
-            var changedEntities = ChangeTracker
-                .Entries()
-                .Where(_ => _.State == EntityState.Added ||
-                            _.State == EntityState.Modified);
+            var changedEntities = ChangeTracker.Entries()
+                                               .Where(_ => _.State == EntityState.Added ||
+                                                           _.State == EntityState.Modified)
+                                               .Select(entry => (EntityBase)entry.Entity);
 
-            var entitiesAreValid = ValidateEntries(changedEntities);
+            var validationResult = validationService.ValidateEntities(changedEntities);
 
-            if (entitiesAreValid)
+            if (!validationResult.Any())
                 return base.SaveChanges();
 
             return 0;
         }
-        private bool ValidateEntries(IEnumerable<EntityEntry> entityEntries)
+
+        public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
-            var failedValidations = new List<ValidationResult>();
-            foreach (var e in entityEntries)
-            {
-                var vc = new ValidationContext(e.Entity, null, null);
-                var success = Validator.TryValidateObject(
-                    e.Entity, vc, failedValidations, validateAllProperties: true);
-                if (!success)
-                    throw new ValidationException($"Validation failed for entity: {e.Entity.GetType().Name}\n{failedValidations.First().ErrorMessage}");
-            }
+            var changedEntities = ChangeTracker.Entries()
+                                               .Where(_ => _.State == EntityState.Added ||
+                                                           _.State == EntityState.Modified)
+                                               .Select(entry => (EntityBase)entry.Entity);
 
-            if (failedValidations.Count > 0)
-                return false;
+            var validationResult = validationService.ValidateEntities(changedEntities);
 
-            return true;
+            if (!validationResult.Any())
+                return base.SaveChangesAsync(cancellationToken);
+
+            return Task.FromResult(0);
 
         }
-    }
 
+        #endregion
+
+    }
 }

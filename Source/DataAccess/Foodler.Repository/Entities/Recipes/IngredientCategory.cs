@@ -5,9 +5,13 @@ namespace Foodler.Repository.Entities.Recipes
 {
     public class IngredientCategory : EntityBase, IIngredientCategory
     {
-        public void SetName(string name)
+        public IngredientCategory(string name) : base(name)
+        {
+        }
+        public IIngredientCategory SetName(string name)
         {
             this.Name = name;
+            return this;
         }
     }
 }

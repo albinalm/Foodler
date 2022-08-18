@@ -13,6 +13,8 @@ namespace Foodler.Repository.Repositories.Bases
             this.context = context;
         }
 
+        public abstract IQueryable<TEntity> Query();
+
         public void Insert(TEntity entity)
         {
             if (entity == null)
@@ -20,12 +22,24 @@ namespace Foodler.Repository.Repositories.Bases
 
             context.Add(entity);
         }
-        public TEntity FindById(int id)
+        public void InsertRange(IEnumerable<TEntity> entities)
         {
-            return (TEntity?)context.Find(typeof(TEntity), id)
-                   ?? throw new NullReferenceException("");
-        }
+            if (entities == null || !entities.Any())
+                throw new InvalidOperationException("Entities cannot be null or empty");
 
+            context.AddRange(entities);
+        }
+        public TEntity? FindById(int id)
+        {
+            return (TEntity?)context.Find(typeof(TEntity), id);
+        }
+        public virtual IQueryable<TEntity>? FindByName(string name)
+        {
+            if (string.IsNullOrWhiteSpace(name))
+                throw new InvalidOperationException("Name cannot be null or whitespace");
+
+            return Query().Where(entity => entity.Name == name);
+        }
         public void Delete(TEntity entity)
         {
             if (entity == null)
@@ -63,7 +77,7 @@ namespace Foodler.Repository.Repositories.Bases
             Dispose(true);
             GC.SuppressFinalize(this);
         }
-        public abstract IQueryable<TEntity> Query();
-        public abstract IQueryable<TEntity> FindByName(string name);
+
+
     }
 }

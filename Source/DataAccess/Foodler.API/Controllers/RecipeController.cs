@@ -20,8 +20,8 @@ namespace FoodlerAPI.Controllers
             this.foodlerRecipeService = foodlerRecipeService;
         }
 
-        [HttpPost(Name = "AddRecipe")]
-        public IActionResult Post(Recipe recipe)
+        [HttpPost(Name = "[action]")]
+        public IActionResult AddRecipe(Recipe recipe)
         {
             try
             {
@@ -36,20 +36,25 @@ namespace FoodlerAPI.Controllers
             {
                 return StatusCode(500, ex.Message);
             }
-            //foreach (var recipe in recipes)
-            //{
-            //    foodlerRecipeService.AddRecipe(recipe);
-            //}
-            //return "lol";
-            //var fetchedRecipes = foodlerRecipeService.GetRecipesWithIngredient(ingredient);
-            //var message = "";
-            //foreach (var recipe in fetchedRecipes)
-            //{
-            //    message += recipe.Name + Environment.NewLine;
-            //}
-            //return message;
         }
 
+        [HttpPost(Name = "[action]")]
+        public IActionResult RemoveRecipe(Recipe recipe)
+        {
+            try
+            {
+                foodlerRecipeService.AddRecipe(recipe);
+                return Ok(recipe);
+            }
+            catch (ValidationException validationException)
+            {
+                return BadRequest(validationException.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
 
     }
 }

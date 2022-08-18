@@ -2,6 +2,7 @@
 using Foodler.Repository.Managers.Interfaces;
 using Foodler.Repository.Repositories.Interfaces;
 using Foodler.Shared.Services.Interfaces;
+using System.Linq;
 using RecipeEntities = Foodler.Repository.Entities.Recipes;
 using RecipeModels = Foodler.Shared.Models.Recipes;
 
@@ -23,34 +24,29 @@ namespace Foodler.Shared.Services
         }
         public void AddRecipe(RecipeModels.Recipe recipe)
         {
-            var newrecipe = mapper.Map<RecipeEntities.Recipe>(recipe);
+            var entity = mapper.Map<RecipeEntities.Recipe>(recipe);
 
-            recipeRepository.Insert(newrecipe);
+            recipeRepository.Insert(entity);
             recipeRepository.Save();
         }
-        public IEnumerable<RecipeModels.Recipe> GetRecipesWithIngredient(RecipeModels.Ingredient ingredient)
+
+        public IEnumerable<RecipeModels.Recipe> GetRecipesContainingIngredient(string ingredientName)
         {
-            var recipes = recipeRepository.Query()
-                                        .ToList();
+            var ingredients = ingredientRepository.FindByName(ingredientName);
+            var recipes = recipeRepository.Query();
 
-            var filteredRecipes = new List<RecipeEntities.Recipe>();
-            foreach (var recipe in recipes)
-            {
-                foreach (var recipeIngredient in recipe.Ingredients)
-                {
-                    if (recipeIngredient.Name == ingredient.Name)
-                    {
-                        filteredRecipes.Add(recipe);
-                    }
-                }
-            }
-            var result = new List<RecipeModels.Recipe>();
-            foreach (var recipe in filteredRecipes)
-            {
-                result.Add(mapper.Map<RecipeModels.Recipe>(recipe));
-            }
-            return result;
+            foreach (var ingredient in ingredients)
+                yield return mapper.Map<RecipeModels.Recipe>
+                                    (recipes.First(r => r.Ingredients.Contains(ingredient)));
+        }
+        public void DeleteRecipe(RecipeModels.Recipe recipe)
+        {
+            if (recipe == null)
+                throw new ArgumentNullException(nameof(recipe), "Input parameter recipe cannot be null");
 
+            var entity = recipeRepository.FindByName(recipe.Name).FirstOrDefault();
+            recipeRepository.Delete(entity);
+            recipeRepository.Save();
         }
     }
 }
