@@ -11,7 +11,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\..\Shared\Foodler.Shared\Foodler.Abstractions.csproj" />
+	  <ProjectReference Include="..\..\Shared\Foodler.Abstractions\Foodler.Abstractions.csproj" />
 	</ItemGroup>
 
 </Project>
