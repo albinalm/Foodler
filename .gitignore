@@ -352,3 +352,5 @@ MigrationBackup/
 /Source/App/Foodler/Foodler/GettingStarted.txt
 /Source/App/Foodler/Foodler.Android/Resources/AboutResources.txt
 /Source/App/Foodler/Foodler.Android/Assets/AboutAssets.txt
+/.idea/.idea.Foodler.dir/.idea
+/Source/DataAccess/.idea/.idea.Foodler.DataAccess/.idea
