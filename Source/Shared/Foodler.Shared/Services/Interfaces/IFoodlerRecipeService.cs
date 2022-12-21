@@ -1,6 +1,6 @@
-﻿using Foodler.Shared.Models.Recipes;
+﻿using Foodler.Abstractions.Models.Recipes;
 
-namespace Foodler.Shared.Services.Interfaces
+namespace Foodler.Abstractions.Services.Interfaces
 {
     public interface IFoodlerRecipeService
     {

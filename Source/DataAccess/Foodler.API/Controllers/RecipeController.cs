@@ -1,5 +1,5 @@
-using Foodler.Shared.Models.Recipes;
-using Foodler.Shared.Services.Interfaces;
+using Foodler.Abstractions.Models.Recipes;
+using Foodler.Abstractions.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
 

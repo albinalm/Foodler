@@ -1,6 +1,6 @@
-﻿using Foodler.Shared.Models.Bases;
+﻿using Foodler.Abstractions.Models.Bases;
 
-namespace Foodler.Shared.Models.Accounts
+namespace Foodler.Abstractions.Models.Accounts
 {
     public class User : ModelBase
     {

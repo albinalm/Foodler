@@ -1,4 +1,4 @@
-﻿namespace Foodler.Shared.Models.Bases
+﻿namespace Foodler.Abstractions.Models.Bases
 {
     public abstract class ModelBase
     {

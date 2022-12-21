@@ -1,5 +1,5 @@
 using Foodler.Repository.Database.Context;
-using Foodler.Shared.Configuration;
+using Foodler.Abstractions.Configuration;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

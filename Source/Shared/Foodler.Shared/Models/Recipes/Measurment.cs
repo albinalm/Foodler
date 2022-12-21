@@ -1,6 +1,6 @@
-﻿using Foodler.Shared.Models.Bases;
+﻿using Foodler.Abstractions.Models.Bases;
 
-namespace Foodler.Shared.Models.Recipes
+namespace Foodler.Abstractions.Models.Recipes
 {
     public class Measurment : ModelBase
     {

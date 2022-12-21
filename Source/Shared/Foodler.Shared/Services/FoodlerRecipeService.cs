@@ -1,12 +1,12 @@
 ﻿using AutoMapper;
 using Foodler.Repository.Managers.Interfaces;
 using Foodler.Repository.Repositories.Interfaces;
-using Foodler.Shared.Services.Interfaces;
+using Foodler.Abstractions.Services.Interfaces;
 using System.Linq;
 using RecipeEntities = Foodler.Repository.Entities.Recipes;
-using RecipeModels = Foodler.Shared.Models.Recipes;
+using RecipeModels = Foodler.Abstractions.Models.Recipes;
 
-namespace Foodler.Shared.Services
+namespace Foodler.Abstractions.Services
 {
     public class FoodlerRecipeService : IFoodlerRecipeService
     {

@@ -7,12 +7,12 @@ using Foodler.Repository.Repositories;
 using Foodler.Repository.Repositories.Interfaces;
 using Foodler.Repository.Services;
 using Foodler.Repository.Services.Interfaces;
-using Foodler.Shared.Services;
-using Foodler.Shared.Services.Interfaces;
+using Foodler.Abstractions.Services;
+using Foodler.Abstractions.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Foodler.Shared.Configuration
+namespace Foodler.Abstractions.Configuration
 {
     public static class ConfigureServicesExtension
     {

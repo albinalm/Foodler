@@ -20,8 +20,4 @@
 		<ProjectReference Include="..\..\DataAccess\Foodler.Repository\Foodler.Repository.csproj" />
 	</ItemGroup>
 
-	<ItemGroup>
-		<Folder Include="MappingProfiles\" />
-	</ItemGroup>
-
 </Project>

@@ -1,4 +1,4 @@
-using Foodler.Shared.Configuration;
+using Foodler.Abstractions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
