@@ -13,9 +13,10 @@ namespace Foodler.Repository.Entities.Recipes
         }
 
         public virtual IEnumerable<Ingredient> Ingredients { get; set; }
+        public virtual IEnumerable<RecipeImage> Images { get; set; }
         public string Instructions { get; set; }
         public User Author { get; set; }
-
+        
         public IRecipe SetInstructions(string instructions)
         {
             this.Instructions = instructions;

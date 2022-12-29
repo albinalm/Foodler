@@ -16,13 +16,14 @@ namespace Foodler.Repository.Entities.Bases
         public int Id { get; set; }
 
         public string Name { get; set; }
+        public bool IsDeleted { get; set; }
         public EntityBase(string name)
         {
             Name = name;
         }
 
         protected virtual IEnumerable<ValidationResult> CustomValidation(ValidationContext validationContext) => Enumerable.Empty<ValidationResult>();
-        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        public IEnumerable<Valida4tionResult> Validate(ValidationContext validationContext)
         {
             if (string.IsNullOrWhiteSpace(Name))
                 yield return new ValidationResult(
