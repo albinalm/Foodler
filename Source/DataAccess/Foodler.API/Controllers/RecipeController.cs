@@ -1,12 +1,12 @@
+using System.ComponentModel.DataAnnotations;
 using Foodler.Abstractions.Models.Recipes;
 using Foodler.Abstractions.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using System.ComponentModel.DataAnnotations;
 
-namespace FoodlerAPI.Controllers
+namespace Foodler.API.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]/[action]")]
     public class RecipeController : ControllerBase
     {
 
@@ -20,7 +20,7 @@ namespace FoodlerAPI.Controllers
             this.foodlerRecipeService = foodlerRecipeService;
         }
 
-        [HttpPost(Name = "[action]")]
+        [HttpPost(Name = "AddRecipe")]
         public IActionResult AddRecipe(Recipe recipe)
         {
             try
@@ -38,7 +38,7 @@ namespace FoodlerAPI.Controllers
             }
         }
 
-        [HttpPost(Name = "[action]")]
+        [HttpPost(Name = "RemoveRecipe")]
         public IActionResult RemoveRecipe(Recipe recipe)
         {
             try
