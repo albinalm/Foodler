@@ -23,7 +23,7 @@ namespace Foodler.Repository.Entities.Bases
         }
 
         protected virtual IEnumerable<ValidationResult> CustomValidation(ValidationContext validationContext) => Enumerable.Empty<ValidationResult>();
-        public IEnumerable<Valida4tionResult> Validate(ValidationContext validationContext)
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             if (string.IsNullOrWhiteSpace(Name))
                 yield return new ValidationResult(
