@@ -2,10 +2,8 @@
 using Foodler.Repository.Entities.Recipes;
 using Foodler.Repository.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
-using System.ComponentModel.DataAnnotations;
 
-namespace Foodler.Repository.Database.Context
+namespace Foodler.Repository.Context
 {
     public class FoodlerDatabaseContext : DbContext
     {
@@ -24,7 +22,7 @@ namespace Foodler.Repository.Database.Context
         {
             this.validationService = validationService;
         }
-#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.D
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

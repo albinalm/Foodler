@@ -39,7 +39,7 @@ namespace Foodler.Abstractions.Services
                 yield return mapper.Map<RecipeModels.Recipe>
                                     (recipes.First(r => r.Ingredients.Contains(ingredient)));
         }
-        public void DeleteRecipe(RecipeModels.Recipe recipe)
+        public void HardDeleteRecipe(RecipeModels.Recipe recipe)
         {
             if (recipe == null)
                 throw new ArgumentNullException(nameof(recipe), "Input parameter recipe cannot be null");
@@ -47,6 +47,11 @@ namespace Foodler.Abstractions.Services
             var entity = recipeRepository.FindByName(recipe.Name).FirstOrDefault();
             recipeRepository.Delete(entity);
             recipeRepository.Save();
+        }
+
+        public void SoftDeleteRecipe(RecipeModels.Recipe recipe)
+        {
+            
         }
     }
 }

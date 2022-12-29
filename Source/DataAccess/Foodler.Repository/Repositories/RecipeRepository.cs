@@ -1,4 +1,4 @@
-﻿using Foodler.Repository.Database.Context;
+﻿using Foodler.Repository.Context;
 using Foodler.Repository.Entities.Recipes;
 using Foodler.Repository.Repositories.Bases;
 using Microsoft.EntityFrameworkCore;

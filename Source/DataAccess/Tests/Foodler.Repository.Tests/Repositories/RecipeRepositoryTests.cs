@@ -1,5 +1,4 @@
-﻿using Foodler.Repository.Database.Context;
-using Foodler.Repository.Entities.Bases;
+﻿using Foodler.Repository.Entities.Bases;
 using Foodler.Repository.Entities.Recipes;
 using Foodler.Repository.Entities.Security;
 using Foodler.Repository.Repositories;
@@ -14,6 +13,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Foodler.Repository.Context;
 
 namespace Foodler.Repository.Tests.Repositories
 {
